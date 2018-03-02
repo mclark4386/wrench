@@ -1,0 +1,22 @@
+language: go
+
+dist: trusty
+
+sudo: required
+
+go:
+  - 1.8
+  - 1.9
+  - tip
+
+install:
+ - go get -t -v ./...
+
+script: go test ./... -v
+
+services:
+  - redis-server
+
+matrix:
+  allow_failures:
+    - go: 'tip'
